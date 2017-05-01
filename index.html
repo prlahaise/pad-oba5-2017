@@ -12,29 +12,35 @@
     <title>Thuis</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- PAD 2017 CSS -->
     <link href="css/pad.css" rel="stylesheet">
-
   </head>
-
   <body>
     <div class="container">
       <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
           <h2>Nog te maken puzzles:</h2>
+          <div class="">Puzzle 1</div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
           <div class="row">
             <div class="col-lg-6">
             <h2>Behaalde stickers:</h2> 
-              <div class="input-group">
+              <form action="javascript:alert( 'success!' );">
+                <div>
+                  <input type="text" class="form-control" placeholder="Toverwoord">
+                  <input class="btn btn-default" type="submit">
+                </div>
+              </form>
+              <span></span>
+                <!--
                 <input type="text" class="form-control" placeholder="Toverwoord">
                 <span class="input-group-btn">
                 <button class="btn btn-default" type="button">Invoeren!</button>
                 </span>
-              </div><!-- /input-group -->
+              </div> --><!-- /input-group -->
             </div><!-- /Sticker col -->
           </div><!-- /Sticker row -->
 
@@ -97,9 +103,8 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/bootstrap.js"></script>
     <script src="js/pad.js"</script>
   </body>
 </html>
