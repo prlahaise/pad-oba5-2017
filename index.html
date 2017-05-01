@@ -22,28 +22,18 @@
       <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
           <h2>Nog te maken puzzles:</h2>
-          <div class="">Puzzle 1</div>
+          <div id="p1">Puzzle 1</div>
+          <div id="p2">Puzzle 2</div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
           <div class="row">
             <div class="col-lg-6">
             <h2>Behaalde stickers:</h2> 
-              <form action="javascript:alert( 'success!' );">
-                <div>
-                  <input type="text" class="form-control" placeholder="Toverwoord">
-                  <input class="btn btn-default" type="submit">
-                </div>
-              </form>
-              <span></span>
-                <!--
-                <input type="text" class="form-control" placeholder="Toverwoord">
-                <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Invoeren!</button>
-                </span>
-              </div> --><!-- /input-group -->
+              <div>
+                <input type="text" class="form-control" id="test" placeholder="Toverwoord">
+              </div><!-- /input-group -->
             </div><!-- /Sticker col -->
-          </div><!-- /Sticker row -->
-
+          </div><!-- /Sticker row -->          
           <div class="row">
               <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe">
                   <img src="http://fakeimg.pl/365x365/" class="img-responsive">
@@ -94,7 +84,7 @@
               </div>
           </div>
           </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <div id="mvtest" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
           <h2>Gemaakte puzzles:</h2>
         </div>
       </div>
@@ -105,6 +95,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery-3.2.1.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/pad.js"</script>
+    <script src="js/pad.js"></script>
   </body>
 </html>

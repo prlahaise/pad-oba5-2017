@@ -1,10 +1,14 @@
-<script>
-  $( "form" ).submit(function( event ) {
-    if ( $( "input:first" ).val() === "correct" ) {
-      $( "span" ).text( "Validated..." ).show();
-      return;
-    }
-   
-    $( "span" ).text( "Not valid!" ).show().fadeOut( 1000 );
-    event.preventDefault();
-  </script>           
+$(document).ready(function(){
+$("#test").on("change keyup paste", function(){
+  var toverwoord = $('#test').val();
+
+  switch(toverwoord) {
+  	case "test":
+  		$("#p1").appendTo("#mvtest");
+  		break;
+  	case "test2":
+  		$("#p2").appendTo("#mvtest");
+  		break;
+  }
+ })
+});
