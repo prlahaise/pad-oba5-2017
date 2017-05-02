@@ -56,3 +56,8 @@ body {
 {
     margin-bottom: 30px;
 }
+
+img
+{
+    filter:grayscale(100%);
+}

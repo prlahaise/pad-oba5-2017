@@ -5,9 +5,11 @@ $("#test").on("change keyup paste", function(){
   switch(toverwoord) {
   	case "test":
   		$("#p1").appendTo("#mvtest");
+  		$('#testimage01').css({"filter":"grayscale(0%)"});
   		break;
   	case "test2":
   		$("#p2").appendTo("#mvtest");
+  		$('#testimage02').css({"filter":"grayscale(0%)"});
   		break;
   }
  })
