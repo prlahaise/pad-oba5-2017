@@ -1,106 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bovenstaande meta tags zijn veprlicht in deze volgorde voor Bootstrap -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bovenstaande meta tags zijn veprlicht in deze volgorde voor Bootstrap -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="favicon.ico">
 
-    <title>Thuis</title>
+  <title>Prototype</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.css" rel="stylesheet">
 
-    <!-- PAD 2017 CSS -->
-    <link href="css/pad.css" rel="stylesheet">
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-          <h1 class="h1-responsive">Nog te maken puzzles:</h1>
-          <div class="row text-center gallery_product my_popup_open" id="p1">
-            <img id="small" src="images/small-dummy.png" class="img-responsive pull-left sticker"><h2>Puzzle 1</h2>
-          </div>
+  <!-- PAD 2017 CSS -->
+  <link href="css/pad.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
 
-            <div id="my_popup">
-            </div>
-
-          <div class="row text-center gallery_product" id="p2">
-            <img id="small" src="images/small-dummy.png" class="img-responsive pull-left sticker"><h2>Puzzle 2</h2>
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-          <div class="row">
-            <h1>Behaalde stickers:</h1> 
-              <div class="form-group">
-                <input type="text" class="form-control" id="invoer" placeholder="Voer hier het toverwoord in!">
-              </div><!-- /input-group -->
-          </div><!-- /Sticker row -->          
-          <div class="row">
-              <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                  <img id="testimage01" src="images/dummy.png" class="img-responsive sticker">
-              </div>
-
-              <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                  <img id="testimage02" src="images/dummy.png" class="img-responsive sticker">
-              </div>
-
-              <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                  <img src="images/dummy.png" class="img-responsive sticker">
-              </div>
-
-              <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                  <img src="images/dummy.png" class="img-responsive sticker">
-              </div>
-
-              <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                  <img src="images/dummy.png" class="img-responsive sticker">
-              </div>
-
-              <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                  <img src="images/dummy.png" class="img-responsive sticker">
-              </div>
-
-              <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                  <img src="images/dummy.png" class="img-responsive sticker">
-              </div>
-
-              <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                  <img src="images/dummy.png" class="img-responsive sticker">
-              </div>
-
-              <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                  <img src="images/dummy.png" class="img-responsive sticker">
-              </div>
-
-              <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                  <img src="images/dummy.png" class="img-responsive sticker">
-              </div>
-
-              <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                  <img src="images/dummy.png" class="img-responsive sticker">
-              </div>
-
-              <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                  <img src="images/dummy.png" class="img-responsive sticker">
-              </div>
-          </div>
-          </div>
-        <div id="mvtest" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-          <h1>Gemaakte puzzles:</h1>
-        </div>
+    <!-- Titles -->
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <h1>Nieuwe Puzzles</h1>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <h1>Gehaalde Stickers</h1>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <h1>Gemaakte Puzzles</h1>
       </div>
     </div>
 
-    <!-- JavaScript Dependencies -->
-    <script src="js/jquery-3.2.1.js"></script> 
-    <script src="js/bootstrap.js"></script>
-    <script src="js/jquery.popupoverlay.js"></script>
-    <script src="js/pad.js"></script>
-    <script src="js/phaser.min.js"></script>
-  </body>
+    <!-- Puzzles -->
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+      <div class="row puzzle text-center gallery_product my_popup_open" id="p1">
+        <img id="small" src="images/small-dummy.png" class="img-responsive img-thumbnail pull-left sticker"><h2>Puzzle 1</h2>
+      </div>
+
+      <!-- Popup overlay -->
+      <div id="my_popup">
+      </div>
+
+      <div class="row puzzle text-center gallery_product" id="p2">
+        <img id="small" src="images/small-dummy.png" class="img-responsive img-thumbnail pull-left sticker"><h2>Puzzle 2</h2>
+      </div>
+    </div>
+
+    <!-- Input field -->
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      <div class="form-group">
+        <input type="text" class="form-control" id="invoer" placeholder="Voer hier het toverwoord in">
+      </div>
+
+      <!-- Stickers -->   
+      <div class="row">
+        <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
+          <img id="testimage01" src="images/dummy.png" class="img-responsive img-rounded sticker">
+        </div>
+
+        <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
+          <img id="testimage02" src="images/dummy.png" class="img-responsive img-rounded sticker">
+        </div>
+
+        <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
+          <img src="images/dummy.png" class="img-responsive img-rounded sticker">
+        </div>
+
+        <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
+          <img src="images/dummy.png" class="img-responsive img-rounded sticker">
+        </div>
+
+        <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
+          <img src="images/dummy.png" class="img-responsive img-rounded sticker">
+        </div>
+
+        <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
+          <img src="images/dummy.png" class="img-responsive img-rounded sticker">
+        </div>
+
+        <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
+          <img src="images/dummy.png" class="img-responsive img-rounded sticker">
+        </div>
+
+        <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
+          <img src="images/dummy.png" class="img-responsive img-rounded sticker">
+        </div>
+
+        <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
+          <img src="images/dummy.png" class="img-responsive img-rounded sticker">
+        </div>
+
+        <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
+          <img src="images/dummy.png" class="img-responsive img-rounded sticker">
+        </div>
+
+        <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
+          <img src="images/dummy.png" class="img-responsive img-rounded sticker">
+        </div>
+
+        <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
+          <img src="images/dummy.png" class="img-responsive img-rounded sticker">
+        </div>
+      </div>
+    </div>
+    <div id="mvtest" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript Dependencies -->
+<script src="js/jquery-3.2.1.js"></script> 
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.popupoverlay.js"></script>
+<script src="js/phaser.min.js"></script>
+<script src="js/pad.js"></script>
+</body>
 </html>

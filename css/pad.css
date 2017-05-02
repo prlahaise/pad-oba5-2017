@@ -1,21 +1,76 @@
 body 
 {
     padding-top: 50px;
+    background: #093145;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: white;
 }
 
+/* input styling */
 #invoer
 {
-
+    color: #093145;
+    border-radius: 25px;
+    line-height: 50px;
+    height: 50px;
+    font-weight: bold;
+    text-align: center;
 }
 
+/* input placeholder color change */
+.form-control::-webkit-input-placeholder { color: #093145; }
+.form-control:-moz-placeholder { color: #093145; }
+.form-control::-moz-placeholder { color: #093145; }
+.form-control:-ms-input-placeholder { color: #093145; }
+
+/* placeholder focus fade */
+:focus::-webkit-input-placeholder {
+  opacity: 0;
+  -webkit-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
+}
+:focus:-moz-placeholder {
+  opacity: 0;
+  -moz-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
+}
+:focus::-moz-placeholder {
+  opacity: 0;
+  -moz-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
+}
+:focus:-ms-input-placeholder {  
+  opacity: 0;
+  -ms-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
+}
+
+
+/* sticker styling */
 .gallery_product
 {
     margin-bottom: 30px;
 }
 
+/* grayscale stickers */
 .sticker
 {   
     filter: grayscale(100%);
+}
+
+/* puzzle styling */
+.puzzle {
+    cursor: pointer;
+}
+
+.puzzle:hover {
+    opacity: 0.4;
 }
 
 /* responsive text queries */
