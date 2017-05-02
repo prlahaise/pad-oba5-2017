@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 // Initialize overlay plugin
 $('#my_popup').popup();
-$('#my_popup').load("test.html");
+$('#my_popup').load("test2.html");
 
 // Check user input for 'toverwoorden'
 $("#invoer").on("change keyup paste", function(){

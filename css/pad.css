@@ -14,8 +14,8 @@ body
 }
 
 .sticker
-{
-    filter:grayscale(100%);
+{   
+    filter: grayscale(100%);
 }
 
 /* responsive text queries */
