@@ -1,6 +1,6 @@
 $(document).ready(function(){
-$("#test").on("change keyup paste", function(){
-  var toverwoord = $('#test').val();
+$("#invoer").on("change keyup paste", function(){
+  var toverwoord = $('#invoer').val();
 
   switch(toverwoord) {
   	case "test":
