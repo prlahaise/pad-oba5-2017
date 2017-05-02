@@ -14,10 +14,11 @@
 
 <script type="text/javascript">
 
-var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'my_popup', { preload: preload, create: create, update: update, render: render });
+var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
 	
+	game.load.image('simon', 'sprites/simonsays.png', 807, 94);
 	game.load.image('background', 'sprites/background.png', 800, 600);
     game.load.spritesheet('item', 'sprites/buttons.png', 160, 160);
 }
@@ -28,7 +29,7 @@ var userCount = 0;
 var currentCount = 0;
 var sequenceCount = 5;
 var sequenceList = [];
-var simonSez = false;
+var simonsays = false;
 var timeCheck;
 var litSquare;
 var winner;
@@ -49,7 +50,7 @@ function create() {
         item.input.start(0, true);
         item.events.onInputDown.add(select);
         item.events.onInputUp.add(release);
-        item.events.onInputOut.add(moveOff);
+
         simon.getAt(i).alpha = 0;
     }
 
@@ -61,7 +62,7 @@ function create() {
         item.input.start(0, true);
         item.events.onInputDown.add(select);
         item.events.onInputUp.add(release);
-        item.events.onInputOut.add(moveOff);
+
         simon.getAt(i + 3).alpha = 0;
     }
 
@@ -87,38 +88,38 @@ function restart() {
 
 function introTween() {
 
-    intro = true;
+    intro = true; //Hier start het spel de introductie
 
-    for (var i = 0; i < 6; i++)
+    for (var i = 0; i < 6; i++) //6 ticks geven dat de pokemons 3x knipperen (3x aan en 3x vervaagd)
     {
-        var flashing = game.add.tween(simon.getAt(i)).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 4, true);
-        var final = game.add.tween(simon.getAt(i)).to( { alpha: .25 }, 500, Phaser.Easing.Linear.None, true);
+        var flashing = game.add.tween(simon.getAt(i)).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 4, true); //variabele helder worden
+        var final = game.add.tween(simon.getAt(i)).to( { alpha: .45 }, 500, Phaser.Easing.Linear.None, true);//variabele vervagen
 
-        flashing.chain(final);
-        flashing.start();
+        flashing.chain(final); //vervaagd de pokemons - final als laatste dat het plaatje vervaagd blijft
+        flashing.start(); //maakt het plaatje helder
     }
 
 }
 
-function update() {
+function update() { //update zodat hij deze blijft uitvoeren
 
-    if (simonSez)
+    if (simonsays)
     {
-        if (game.time.now - timeCheck >700-N*40)
+        if (game.time.now - timeCheck >800-N*40) //timer hoelang het plaatje zichtbaar is
         {
             simon.getAt(litSquare).alpha = .45;
             game.paused = true;
 
-            setTimeout(function()
+            setTimeout(function() 
             {
-                if ( currentCount< N)
+                if ( currentCount< N) //roept een nieuwe functie aan om te zeggen dat hij door naar de volgende moet gaan
                 {
                     game.paused = false;
                     simonSequence();
                 }
-                else
+                else //haalt de speler uit de vergrendeling
                 {
-                    simonSez = false;
+                    simonsays = false;
                     game.paused = false;
                 }
             }, 400 - N * 4);
@@ -139,14 +140,14 @@ function playerSequence(selected) {
             if (N == sequenceCount)
             {
                 winner = true;
-                setTimeout(function(){restart();}, 3000);
+                setTimeout(function(){restart();}, 30000);
             }
             else
             {
                 userCount = 0;
                 currentCount = 0;
                 N++;
-                simonSez = true;
+                simonsays = true;
             }
         }
     }
@@ -160,7 +161,7 @@ function playerSequence(selected) {
 
 function simonSequence () {
 
-    simonSez = true;
+    simonsays = true;
     litSquare = sequenceList[currentCount];
     simon.getAt(litSquare).alpha = 1;
     timeCheck = game.time.now;
@@ -168,7 +169,7 @@ function simonSequence () {
 
 }
 
-function setUp() {
+function setUp() {	//een randomizer om een pokemon (int) te kiezen
 
     for (var i = 0; i < sequenceCount; i++)
     {
@@ -178,59 +179,50 @@ function setUp() {
 
 }
 
-function select(item, pointer) {
+function select(item, pointer) { //hoe de pokemon oplicht als je hem selecteerd
 
-    if (!simonSez && !intro && !loser && !winner)
+    if (!simonsays && !intro && !loser && !winner)
     {
         item.alpha = 1;
     }
 
 }
 
-function release(item, pointer) {
+function release(item, pointer) { //hoe de pokemon weer terugvervaagd na de klik
 
-    if (!simonSez && !intro && !loser && !winner)
+    if (!simonsays && !intro && !loser && !winner)
     {
-        item.alpha = .25;
+        item.alpha = .45;
         playerSequence(item);
     }
 }
 
-function moveOff(item, pointer) {
+function render() { // rendered de tekst in de game
 
-    if (!simonSez && !intro && !loser && !winner)
+    if (!intro && !winner && !loser)
     {
-        item.alpha = .25;
-    }
-
-}
-
-function render() {
-
-    if (!intro)
-    {
-        if (simonSez)
+        if (simonsays)
         {
-            game.debug.text('Simon Sez', 360, 96, 'rgb(255,0,0)');
-			game.debug.image
+            game.debug.text('**De pokémons praten**', 300, 96, 'rgb(255,255,255)');
         }
         else
         {
-            game.debug.text('Your Turn', 360, 96, 'rgb(0,255,0)');
+            game.debug.text('In welke volgorde spraken de pokémons?', 300, 96, 'rgb(255,255,255)');
         }
     }
     else
     {
-        game.debug.text('Get Ready', 360, 96, 'rgb(0,0,255)');
+        game.add.sprite(48,0,'simon');
     }
 
     if (winner)
     {
-        game.debug.text('You Win!', 360, 32, 'rgb(0,0,255)');
+        game.debug.text('Je bent een echte pokemonmeester!', 300, 108, 'rgb(255,255,255)');
+		game.debug.text('Het toverwoord is: test', 300, 120, 'rgb(255,255,255)');
     }
     else if (loser)
     {
-        game.debug.text('You Lose!', 360, 32, 'rgb(0,0,255)');
+        game.debug.text('Helaas, volgende keer beter', 300, 96, 'rgb(255,255,255)');
     }
 
 }
