@@ -73,6 +73,11 @@ body
     opacity: 0.4;
 }
 
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 /* responsive text queries */
 @media screen and (max-width: 992px) {
   p,.btn,input,div,span,h4 {
@@ -102,4 +107,11 @@ body
   h3 {
     font-size: 16px;  
   }
+}
+
+@media screen and (max-width: 320px) {
+  .form-control::-webkit-input-placeholder { font-size: 7px; }
+  .form-control:-moz-placeholder { font-size: 7px; }
+  .form-control::-moz-placeholder { font-size: 7px; }
+  .form-control:-ms-input-placeholder { font-size: 7px; }
 }
