@@ -109,7 +109,7 @@ h1 {
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 400px) {
   .form-control::-webkit-input-placeholder { font-size: 7px; }
   .form-control:-moz-placeholder { font-size: 7px; }
   .form-control::-moz-placeholder { font-size: 7px; }
