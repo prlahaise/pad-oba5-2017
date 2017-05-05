@@ -7,13 +7,13 @@ $('#my_popup2').popup();
 // Load Phaser games
 $('#my_popup').popup({
   onopen: function() {
-    $(this).load("test2.html");
+    $(this).load("geheugen.html");
   }
 });
 
 $('#my_popup2').popup({
   onopen: function() {
-    $(this).load("slide.html");
+    $(this).load("schuifpuzzel.html");
   }
 });
 

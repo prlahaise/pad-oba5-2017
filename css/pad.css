@@ -1,7 +1,7 @@
 body 
 {
     padding-top: 50px;
-    background: #093145;
+    background-image: url("https://img.clipartfest.com/6225f66ab32f163ca3b2f8be72703ff6_halloween-decorations-for-halloween-background-free-clipart_2400-1805.gif");
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
@@ -12,22 +12,44 @@ body
     color: white;
 }
 
+@font-face {
+    font-family: terrorFont;
+    src: url(../fonts/JMH_SELECT_TERROR.otf);
+}
+
+/* transparant background */
+.container {
+    background: rgba(0,0,0,0.6);
+    border-radius: 50px;
+}
+
 /* input styling */
+.form-group {
+    padding: 20px 20px 20px 20px;
+}
+
 #invoer
 {
-    color: #093145;
-    border-radius: 25px;
+    color: white;
     line-height: 50px;
     height: 50px;
     font-weight: bold;
     text-align: center;
+    background: none;
+    border: none;
+    outline: none;
+    border-radius: 0;
+    border-bottom: 2px dotted;
+    -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
 /* input placeholder color change */
-.form-control::-webkit-input-placeholder { color: #093145; }
-.form-control:-moz-placeholder { color: #093145; }
-.form-control::-moz-placeholder { color: #093145; }
-.form-control:-ms-input-placeholder { color: #093145; }
+.form-control::-webkit-input-placeholder { color: white; }
+.form-control:-moz-placeholder { color: white; }
+.form-control::-moz-placeholder { color: white; }
+.form-control:-ms-input-placeholder { color: white; }
 
 /* placeholder focus fade */
 :focus::-webkit-input-placeholder {
@@ -76,6 +98,8 @@ body
 h1 {
   text-align: center;
   margin-bottom: 30px;
+  font-size: 400%;
+  font-family: terrorFont;
 }
 
 /* responsive text queries */
