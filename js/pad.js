@@ -2,13 +2,31 @@ $(document).ready(function(){
 
 // Initialize overlay plugin
 $('#my_popup').popup();
-$('#my_popup').load("test2.html");
-//$('#my_popup2').popup();
-//$('#my_popup2').load("slide.html");
+$('#my_popup2').popup();
 
+// Load Phaser games
+$('#my_popup').popup({
+  onopen: function() {
+    $(this).load("test2.html");
+  }
+});
+
+$('#my_popup2').popup({
+  onopen: function() {
+    $(this).load("slide.html");
+  }
+});
+
+// Empty Phaser games from popup
+$('.popup').popup({
+  onclose: function() {
+  	game.destroy();
+  	$(this).empty();
+  }
+});
 
 // Check user input for 'toverwoorden'
-$("#invoer").on("change keyup paste", function(){
+$('#invoer').on("change keyup paste", function(){
   var toverwoord = $('#invoer').val();
 
   switch(toverwoord) {
