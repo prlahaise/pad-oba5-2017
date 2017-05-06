@@ -1,10 +1,26 @@
 $(document).ready(function(){
 
+var puzzleID;
+
 // Initialize overlay plugin
 $('#my_popup').popup();
 $('#my_popup2').popup();
 
-// Load Phaser games
+// Set puzzle to done
+function puzzleDone() {
+    $('#' + puzzleID).appendTo("#mvtest");
+    $('#puzzleimage_' + puzzleID).css({"filter":"grayscale(0%)"});
+};
+
+// Check session cookies
+for (i =0; i < 11; i++) {
+   if (Cookies.get('p' + i) === "1") {
+    puzzleID = 'p' + i;
+    puzzleDone();
+   }
+}
+
+// Load Phaser games into popup
 $('#my_popup').popup({
   onopen: function() {
     $(this).load("geheugen.html");
@@ -20,6 +36,9 @@ $('#my_popup2').popup({
 // Empty Phaser games from popup
 $('.popup').popup({
   onclose: function() {
+    game.AudioContext = null;
+    game.webkitAudioContext = null;
+    game.SoundManager = null;
   	game.destroy();
   	$(this).empty();
   }
@@ -31,12 +50,14 @@ $('#invoer').on("change keyup paste", function(){
 
   switch(toverwoord) {
   	case "test":
-  		$('#p1').appendTo("#mvtest");
-  		$('#testimage01').css({"filter":"grayscale(0%)"});
+      puzzleID = "p1";
+      puzzleDone();
+      Cookies.set('p1', '1');
   		break;
   	case "test2":
-  		$('#p2').appendTo("#mvtest");
-  		$('#testimage02').css({"filter":"grayscale(0%)"});
+  		puzzleID = "p2";
+      puzzleDone();
+      Cookies.set('p2', '1');
   		break;
   }
  })
