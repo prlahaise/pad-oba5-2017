@@ -14,10 +14,10 @@
 
 <script type="text/javascript">
 
-var game = new Phaser.Game(600, 600, Phaser.CANVAS, 'my_popup2', { preload: preload, create: create, update: update});
+var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'my_popup2', { preload: preload, create: create, update: update});
 
-var PIECE_WIDTH = 150,
-    PIECE_HEIGHT = 150,
+var PIECE_WIDTH = 200,
+    PIECE_HEIGHT = 200,
     BOARD_COLS,
     BOARD_ROWS;
 
@@ -31,19 +31,27 @@ var completed,
 function preload() {
     game.load.spritesheet("background", "sprites/puzzle.png", PIECE_WIDTH, PIECE_HEIGHT);
 	game.load.image('completed', 'sprites/button.png');
+	game.load.image('help', 'sprites/help.png');
+	game.load.image('explanation', 'sprites/help2.png');
 	game.load.image('finished', 'sprites/puzzle2.png');
 }
 
 function create() {
     prepareBoard();
-	completed = game.add.sprite(570, 570, 'completed');
+	completed = game.add.sprite(770, 570, 'completed');
+	help = game.add.sprite(770, 45, 'help');
 	finished = game.add.sprite(0, 0, 'finished');
+	explanation = game.add.sprite(0, 0, 'explanation');
 	
 	completed.alpha = 0.5;
 	completed.anchor.set(0.5);
+	help.alpha = 0.8;
+	help.anchor.set(0.8);
+	explanation.alpha = 0;
 	finished.alpha = 0;
 	
 	completed.inputEnabled = true;
+	help.inputEnabled = true;
 	
 	game.input.addMoveCallback(p, this);
 	
@@ -62,12 +70,18 @@ function update() {
         completed.alpha = 1;
 		finished.alpha = 1;
     }
+	else if (help.input.pointerOver())
+	{
+		help.alpha = 1;
+		explanation.alpha = 1;
+	}
     else
     {
         completed.alpha = 0.5;
 		finished.alpha = 0;
+		help.alpha = 0.8;
+		explanation.alpha = 0;
     }
-
 }
 
 function prepareBoard() {

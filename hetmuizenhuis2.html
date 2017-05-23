@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+  <script language="JavaScript">
+
+    var numQues = 4;
+    var numChoi = 3;
+
+    var answers = new Array(6);
+    answers[0] = "1a";
+    answers[1] = "2a";
+    answers[2] = "3c";
+    answers[3] = "4c";
+    answers[4] = "5b";
+    answers[5] = "6b";
+
+    function getScore(form) {
+      var score = 0;
+      var currElt;
+      var currSelection;
+
+      for (i=0; i<numQues; i++) {
+        currElt = i*numChoi;
+        for (j=0; j<numChoi; j++) {
+          currSelection = form.elements[currElt + j];
+          if (currSelection.checked) {
+            if (currSelection.value == answers[i]) {
+              score++;
+              break;
+            }
+          }
+        }
+      }
+
+      score = Math.round(score/numQues*100);
+      form.percentage.value = score + "%";
+
+
+      var correctAnswers = "";
+      for (i=1; i<=numQues; i++) {
+        correctAnswers += i + ". " + answers[i-1] + "\r\n";
+      }
+      form.solutions.value = correctAnswers;
+
+    }
+
+  </script>
+</head>
+<body>
+
+	<p>Bij dit spel krijg jij foto's te zien van kamers uit het muizenhuis. Lees het boek om erachter te komen van wie elke kamer is. Wanneer je alle vragen goed hebt krijg een toverwoord. Succes!</p>
+
+  <form name="quiz">
+    1. Van wie is deze kamer? <br>
+    <img src="">
+    <input type="radio" name="q1" value="1a">Voddenboer<br>
+    <input type="radio" name="q1" value="1b">Klerenmaker<br>
+    <input type="radio" name="q1" value="1c">Postbode<br>
+    <p>
+
+      2. Van wie is deze kamer? <br>
+
+      <input type="radio" name="q2" value="2a">Klein Sofie<br>
+      <input type="radio" name="q2" value="2b">Sam<br>
+      <input type="radio" name="q2" value="2c">Julia<br>
+      <p>
+
+        3. Van wie is deze kamer? <br>
+        <input type="radio" name="q3" value="3a">Neef van Sam<br>
+        <input type="radio" name="q3" value="3b">Opa van sam<br>
+        <input type="radio" name="q3" value="3c">Oom Jan<br>
+        <p>
+
+          4. Van wie is deze kamer? <br>
+          <input type="radio" name="q4" value="4a">Kleine Sofie<br>
+          <input type="radio" name="q4" value="4b">Voddenboer<br>
+          <input type="radio" name="q4" value="4c">Opa van Sam<br>
+          <p>
+
+            <input type="button" value="Get score" onClick="getScore(this.form)">
+            <input type="reset" value="Clear"><p>
+            Score = <input type=text size=15 name="percentage"><br>
+
+          </form>
+        </body>
+        </html>

@@ -5,6 +5,7 @@ var puzzleID;
 // Initialize overlay plugin
 $('#my_popup').popup();
 $('#my_popup2').popup();
+$('#my_popup3').popup();
 
 // Set puzzle to done
 function puzzleDone() {
@@ -30,6 +31,18 @@ $('#my_popup').popup({
 $('#my_popup2').popup({
   onopen: function() {
     $(this).load("schuifpuzzel.html");
+  }
+});
+
+$('#my_popup3').popup({
+  onopen: function() {
+    $(this).load("hetmuizenhuis1.html");
+  }
+});
+
+$('#my_popup4').popup({
+  onopen: function() {
+    $(this).load("hetmuizenhuis2.html");
   }
 });
 
@@ -59,6 +72,16 @@ $('#invoer').on("change keyup paste", function(){
       puzzleDone();
       Cookies.set('p2', '1');
   		break;
+    case "test3":
+      puzzleID = "p3";
+      puzzleDone();
+      Cookies.set('p3', '1');
+      break;
+    case "test4":
+      puzzleID = "p4";
+      puzzleDone();
+      Cookies.set('p4', '1');
+      break;
   }
  })
 });
