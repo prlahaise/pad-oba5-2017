@@ -21,6 +21,8 @@ function preload() {
 	game.load.image('simon', 'sprites/simonsays.png', 807, 94);
 	game.load.image('background', 'sprites/background.png', 800, 600);
     game.load.spritesheet('item', 'sprites/buttons.png', 160, 160);
+	game.load.image('help', 'sprites/help.png');
+	game.load.image('explanation', 'sprites/help2.png');
 }
 
 var simon;
@@ -39,8 +41,16 @@ var intro;
 function create() {
 	
 	game.add.sprite(0, 0, 'background');
+	help = game.add.sprite(770, 45, 'help');
+	explanation = game.add.sprite(0, 0, 'explanation');
     simon = game.add.group();
     var item;
+	
+	help.alpha = 0.8;
+	help.anchor.set(0.8);
+	explanation.alpha = 0;
+	
+	help.inputEnabled = true;
 
     for (var i = 0; i < 3; i++)
     {
@@ -88,21 +98,32 @@ function restart() {
 
 function introTween() {
 
-    intro = true; //Hier start het game de introductie
+    intro = true; //Hier start het spel de introductie
 
-    for (var i = 0; i < 6; i++) //6 ticks geven dat de pokemons 3x knipperen (3x aan en 3x vervaagd)
+    for (var i = 0; i < 6; i++) //6 ticks geven dat er 6 verschillende pokemons zijn)
     {
-        var flashing = game.add.tween(simon.getAt(i)).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 4, true); //variabele helder worden
-        var final = game.add.tween(simon.getAt(i)).to( { alpha: .45 }, 500, Phaser.Easing.Linear.None, true);//variabele vervagen
+        var flashing = game.add.tween(simon.getAt(i)).to( { alpha: 1 }, 1200, Phaser.Easing.Linear.None, true, 0, 2, true); //variabele helder worden
+        var final = game.add.tween(simon.getAt(i)).to( { alpha: .45 }, 1200, Phaser.Easing.Linear.None, true);//variabele vervagen
 
         flashing.chain(final); //vervaagd de pokemons - final als laatste dat het plaatje vervaagd blijft
         flashing.start(); //maakt het plaatje helder
     }
-
 }
 
 function update() { //update zodat hij deze blijft uitvoeren
 
+	if (help.input.pointerOver())
+	{
+		game.world.bringToTop(explanation);
+		help.alpha = 1;
+		explanation.alpha = 1;
+	}
+    else
+    {
+		help.alpha = 0.8;
+		explanation.alpha = 0;
+    }
+	
     if (simonsays)
     {
         if (game.time.now - timeCheck >800-N*40) //timer hoelang het plaatje zichtbaar is
@@ -117,7 +138,7 @@ function update() { //update zodat hij deze blijft uitvoeren
                     game.paused = false;
                     simonSequence();
                 }
-                else //haalt de gameer uit de vergrendeling
+                else //haalt de speler uit de vergrendeling
                 {
                     simonsays = false;
                     game.paused = false;

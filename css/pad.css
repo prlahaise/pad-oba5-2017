@@ -73,17 +73,11 @@ body
   transition: opacity 0.35s ease-in-out;
 }
 
-/* Quiz styling */
-.quiz {
-  color: black;
-}
-
 /* sticker styling */
 .gallery_product
 {
     margin-bottom: 30px;
 }
-
 
 
 /* grayscale stickers */
